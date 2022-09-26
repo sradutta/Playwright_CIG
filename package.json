@@ -1,0 +1,26 @@
+{
+  "name": "cig_playwright",
+  "version": "1.0.0",
+  "description": "Automated CIG Testing Using Playwright",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tests:threecompanies:chrome": "playwright test tests/cig_homepage_threecompanies.spec.ts --config=playwright.config.ts --project=chromium --retries=3",
+    "tests:threecompanies:firefox": "playwright test tests/cig_homepage_threecompanies.spec.ts --config=playwright.config.ts --project=Firefox --retries=3",
+    "tests:threecompanies:webkit": "playwright test tests/cig_homepage_threecompanies.spec.ts --config=playwright.config.ts --project=webkit --retries=3",
+    "tests:hpfooter:chrome": "playwright test tests/cig_homepage_verify_footer_links.spec.ts --config=playwright.config.ts --project=chromium --retries=3",
+    "tests:hpfooter:firefox": "playwright test tests/cig_homepage_verify_footer_links.spec.ts --config=playwright.config.ts --project=Firefox --retries=3",
+    "tests:hpfooter:webkit": "playwright test tests/cig_homepage_verify_footer_links.spec.ts --config=playwright.config.ts --project=webkit --retries=3",
+    "tests:hpheader:chrome": "playwright test tests/cig_homepage_verify_header_links.spec.ts --config=playwright.config.ts --project=chromium --retries=3",
+    "tests:hpheader:firefox": "playwright test tests/cig_homepage_verify_header_links.spec.ts --config=playwright.config.ts --project=Firefox --retries=3",
+    "tests:hpheader:webkit": "playwright test tests/cig_homepage_verify_header_links.spec.ts --config=playwright.config.ts --project=webkit --retries=3",
+    "jenkins-server": "java -jar jenkins.war --httpPort=8080 --enable-future-java",
+    "tests:iphone13:chrome": "npx playwright open --device=\"iPhone 13\" https://www.careersingear.com/"
+  },
+  "author": "Srabasti Dutta",
+  "license": "ISC",
+  "dependencies": {
+    "@playwright/test": "^1.25.1",
+    "prettier": "^2.7.1"
+  }
+}

@@ -12,20 +12,20 @@ const config: PlaywrightTestConfig = {
         screenshot: "only-on-failure"
     },
 
-    projects: [
-        {
-            name: 'Chromium', 
-            use: {browserName: 'chromium'},
-        },
-        {
-            name: 'FireFox',
-            use: {browserName: 'firefox'},
-        },
-        {
-            name: 'Webkit',
-            use: {browserName: 'webkit'},
-        },
-    ],
+    // projects: [
+    //     {
+    //         name: 'Chromium', 
+    //         use: {browserName: 'chromium'},
+    //     },
+    //     {
+    //         name: 'FireFox',
+    //         use: {browserName: 'firefox'},
+    //     },
+    //     {
+    //         name: 'Webkit',
+    //         use: {browserName: 'webkit'},
+    //     },
+    // ],
 }
 
 export default config

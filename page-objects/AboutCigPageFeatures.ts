@@ -27,6 +27,15 @@ export class AboutCigFeatures {
         await expect (this.page.locator('h1, .title white-text')).toHaveText("About")
         await this.page.screenshot({ path: 'aboutcigscreenshot.png', fullPage: true })
     }
+    async aboutCIGPageLinkToGetStarted() {
+        await expect(this.page.locator('text=Get Started')).toHaveAttribute('href', '/search')
+        await this.page.locator('text=Get Started').click()
+        await expect(this.page).toHaveURL('https://www.careersingear.com/search')
+        const numOfJobs = await this.page.locator('.row,.job-listings').count()
+        await expect(numOfJobs).toBeGreaterThan(0)
+        await this.page.screenshot({path: 'getStarted.png', fullPage: true})
+
+    }
     async visitAndAssertCDLScholarshipPage(){
         await this.cdlscholarship.click()
         await this.page.waitForNavigation

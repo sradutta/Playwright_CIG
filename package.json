@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "tests:jobapplication:chrome": "playwright test tests/cig_homepage_jobapplication_forms.spec.ts --config=playwright.config.ts --project=chromium --retries=3",
     "tests:threecompanies:chrome": "playwright test tests/cig_homepage_threecompanies.spec.ts --config=playwright.config.ts --project=chromium --retries=3",
     "tests:threecompanies:firefox": "playwright test tests/cig_homepage_threecompanies.spec.ts --config=playwright.config.ts --project=Firefox --retries=3",
     "tests:threecompanies:webkit": "playwright test tests/cig_homepage_threecompanies.spec.ts --config=playwright.config.ts --project=webkit --retries=3",

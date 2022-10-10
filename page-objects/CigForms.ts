@@ -1,4 +1,4 @@
-import {expect, Locator, Page} from '@playwright/test'
+import {chromium, expect, Locator, Page} from '@playwright/test'
 
 export class Forms {
 
@@ -41,7 +41,9 @@ export class Forms {
         this.email =        page.locator('#email_container >> [aria-label="Email"]')
         this.phNum =        page.locator('#phone_container >> [aria-label="Phone Number"]')
         //this.submit =       page.locator('.btn btn-primary waves-effect waves-light light-blue darken-3, [type="submit"],[value="Submit"], #submit_button >> text=Submit')
-        this.submit =       page.locator(':nth-match(:text("Submit"),2)')
+        //this.submit =       page.locator(':nth-match(:text("Submit"),2)')
+        this.submit = page.locator('text = I AGREE, SUBMIT')
+        //this.submit = page.locator('#formBuilder, #submit_button')
         //this.verbiage =     page.locator('.opt_in_verbiage >> text=By providing my phone number and clicking the button below, I agree to the')
     }
 
@@ -52,7 +54,11 @@ export class Forms {
     }
     //Use or change this URL, in future, to test the job-application long-form
     async visitJobApplicationLongFormPage(){
-        await this.page.goto('https://www.careersingear.com/k-b-transportation/cdl-a-otr-driver-90k-yearly-6-mos-exp-reqd-393039373536332d3037363735')   
+        //await this.page.goto('https://www.careersingear.com/k-b-transportation/cdl-a-otr-driver-90k-yearly-6-mos-exp-reqd-393039373536332d3037363735') 
+        // const browser = await chromium.launch()
+        // const context = await browser.newContext()
+        // const page = await context.newPage()
+        await this.page.goto('https://www.careersingear.com/averitt-express')  
     }
     //Fill in the job-related questions
     async fillInJobRelatedQuestions(yesorno: string, yrsOfExperience: string, drivertype: string, teamOrSolo: string, leasePurchase: string, 
@@ -185,22 +191,22 @@ export class Forms {
     //Click the "Submit" button
     async clickSubmit(){
         await this.submit.click()
-        if (await this.page.locator('.form-group input-field required invalid').isEnabled){
-            console.log("wrong input")
-        }
+        // if (await this.page.locator('.form-group input-field required invalid').isEnabled){
+        //     console.log("wrong input")
+        // }
         const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
-        await delay(5000)
+        await delay(8000)
     }
     //Assert the presence of the legal paragraphs that appear before the "Submit" button in any job-application form
     async assertLegalVerbiage(){
-        expect((this.page).locator('.opt_in_verbiage')).toContainText('By providing my phone number and clicking the button below, I agree to the')
+        await expect((this.page).locator('.opt_in_verbiage')).toContainText('By providing my phone number and clicking the button below, I agree to the')
     }
     //Assert that the job application got submitted
     async assertJobApplicationSubmitted(){
         //await this.page.waitForEvent('popup')
         //await this.page.waitForLoadState('domcontentloaded');
         //expect(this.page).toHaveURL('https://www.careersingear.com/prequalified', {timeout: 1000})
-        expect(this.page).toHaveURL('https://www.careersingear.com/prequalified')
-        await this.page.screenshot({path: 'shortformsubmitte.png', fullPage:true})
+        await expect(this.page).toHaveURL('https://www.careersingear.com/prequalified')
+        //await this.page.screenshot({path: 'shortformsubmitte.png', fullPage:true})
     }
 }

@@ -1,6 +1,14 @@
 import {test, expect} from '@playwright/test'
 import { CigFeatures} from '../page-objects/CigHompeageFeatures'
 
+/* This tests all the features/links of CIG homepage. 
+The header and footer links that are tested here are also available
+and tested in cig_homepage_footer_links.spec.ts and 
+cig_homepage_header_links.spec.ts as well. Those *spec.ts do not 
+follow Page Object Model style. This page does. This page also tests
+that the link to the three companies from homepage are working.
+*/
+
 
 test.describe('Testing CIG homepage features', () => {
 
@@ -38,7 +46,7 @@ test.describe('Testing CIG homepage features', () => {
        await cigfeatures.clickAndAssertCompany3Page()
     })
     
-    test.only('About CIG Link', async({page}) => {
+    test('About CIG Link', async({page}) => {
         await cigfeatures.clickAndAssertAboutCigPage() 
     })
     test('RR Terms of Use and Privacy Policy Link', async({page}) => {

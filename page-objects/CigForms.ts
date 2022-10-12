@@ -54,11 +54,11 @@ export class Forms {
     }
     //Use or change this URL, in future, to test the job-application long-form
     async visitJobApplicationLongFormPage(){
-        //await this.page.goto('https://www.careersingear.com/k-b-transportation/cdl-a-otr-driver-90k-yearly-6-mos-exp-reqd-393039373536332d3037363735') 
+        await this.page.goto('https://www.careersingear.com/k-b-transportation/cdl-a-otr-driver-90k-yearly-6-mos-exp-reqd-393039373536332d3037363735') 
         // const browser = await chromium.launch()
         // const context = await browser.newContext()
         // const page = await context.newPage()
-        await this.page.goto('https://www.careersingear.com/averitt-express')  
+        //await this.page.goto('https://www.careersingear.com/averitt-express')  
     }
     //Fill in the job-related questions
     async fillInJobRelatedQuestions(yesorno: string, yrsOfExperience: string, drivertype: string, teamOrSolo: string, leasePurchase: string, 
@@ -88,8 +88,9 @@ export class Forms {
                 await this.page.locator('text=Owner operator').click()
                 break;
             case "Company driver":
-                //await this.page.locator('#radio_driver_type_company driver >> text=Company driver').click()
-                await this.page.locator('text=Company driver').click()
+                //await this.page.locator('#radio_driver_type_company driver:has-text("Company driver")').click()
+                //await this.page.locator('text=Company driver >> nth=2').click()
+                await this.page.locator('[for="radio_driver_type_company driver"]').click()
                 break;
             case "Student":
                 //await this.page.locator('#radio_driver_type_student >> text=Student').click()
@@ -194,8 +195,8 @@ export class Forms {
         // if (await this.page.locator('.form-group input-field required invalid').isEnabled){
         //     console.log("wrong input")
         // }
-        const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
-        await delay(8000)
+        // const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
+        // await delay(8000)
     }
     //Assert the presence of the legal paragraphs that appear before the "Submit" button in any job-application form
     async assertLegalVerbiage(){
@@ -205,8 +206,8 @@ export class Forms {
     async assertJobApplicationSubmitted(){
         //await this.page.waitForEvent('popup')
         //await this.page.waitForLoadState('domcontentloaded');
-        //expect(this.page).toHaveURL('https://www.careersingear.com/prequalified', {timeout: 1000})
-        await expect(this.page).toHaveURL('https://www.careersingear.com/prequalified')
+        await expect(this.page).toHaveURL('https://www.careersingear.com/prequalified', {timeout: 20000})
+        //await expect(this.page).toHaveURL('https://www.careersingear.com/prequalified')
         //await this.page.screenshot({path: 'shortformsubmitte.png', fullPage:true})
     }
 }

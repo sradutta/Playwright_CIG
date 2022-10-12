@@ -53,12 +53,14 @@ export class JobLists {
             //     await this.page.pause()
             // }
             await this.page.goto(hrefData[j])
-            const jobAppPresent = await this.page.locator('#applicationHeader').isEnabled()
-            if(jobAppPresent === true){
+            const jobAppNotPresent = await this.page.locator('.off-site').isVisible()
+            if(jobAppNotPresent === true){
+                continue
+            }
+            else {
                 const jobAppPart1 = await this.page.locator('#c_d_l_information').isEnabled()
                 const jobAppPart2 = await this.page.locator('#criminal_record_information').isEnabled()
                 const jobAppPart3 = await this.page.locator('#driver_and_contact_information').isEnabled()
-            
                 if(jobAppPart1 === true){
 
                     //CDL License
@@ -118,8 +120,8 @@ export class JobLists {
                     expect(this.page.locator('[aria-label="Email"] >> nth=1')).toHaveAttribute('required', '')
                 }
             }
+               
         }
-
     }
 
     async createAndFillJDPages(wheretogo: string){

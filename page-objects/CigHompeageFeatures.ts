@@ -37,7 +37,7 @@ export class CigFeatures{
         //Companies in Body
         //this.company1 = page.locator('text=US Xpress')
         this.company1 = page.locator('a:has-text("US Xpress")')
-        this.company2 = page.locator('text=Averitt')
+        this.company2 = page.locator('text=Penske')
         this.company3 = page.locator('text=Crete Carrier Corporation')
         //Footer Tabs
         this.aboutcig = page.locator('text=About CIG')
@@ -107,8 +107,8 @@ export class CigFeatures{
             this.company2.click()
         ])
         await company2Page.waitForLoadState()
-        await expect(company2Page).toHaveURL('https://www.careersingear.com/averitt-express')
-        await expect(company2Page.locator('.company-name')).toHaveText('Averitt Express')
+        await expect(company2Page).toHaveURL('https://www.careersingear.com/penske/jobs')
+        await expect(company2Page.locator('.company-name')).toHaveText('Penske')
         await company2Page.screenshot({path: 'company2.png', fullPage: true})
         const numOfJobs: number = await company2Page.locator('a:has-text("Apply Now")').count()
         await expect(numOfJobs).toBeGreaterThan(0)

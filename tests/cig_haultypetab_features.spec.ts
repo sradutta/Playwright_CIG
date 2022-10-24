@@ -5,8 +5,7 @@ from the top-right navigation menu. The test ensures
 that each of the haul-types navigate user to the correct
 page; user sees jobs. If jobs are not available, then
 user is given the notice about the phone number to call. 
-It also tests that the proper haul-type box is checked. 
-*/
+It also tests that the proper haul-type box is checked. */
 
 test.describe('Testing the haul type tab', () => {
 
